@@ -1,0 +1,71 @@
+WARNING: You're attempting to print out a bitcode file.
+This is inadvisable as it may cause display problems. If
+you REALLY want to taste LLVM bitcode first-hand, you
+can force output with the `-f' option.
+
+Call graph node <<null function>><<0x8b5c6e0>>  #uses=0
+  CS<0x0> calls function 'main'
+  CS<0x0> calls function 'scope1'
+  CS<0x0> calls function 'scope2'
+  CS<0x0> calls function 'scope3'
+  CS<0x0> calls function 'scope4'
+  CS<0x0> calls function 'scope5'
+  CS<0x0> calls function 'scope6'
+  CS<0x0> calls function 'A'
+  CS<0x0> calls function 'printf'
+  CS<0x0> calls function 'B'
+  CS<0x0> calls function 'C'
+  CS<0x0> calls function 'D'
+
+Call graph node for function: 'main'<<0x8b5cff0>>  #uses=1
+  CS<0x8b60058> calls function 'scope1'
+  CS<0x8b600d8> calls function 'scope2'
+  CS<0x8b60158> calls function 'scope3'
+  CS<0x8b601d8> calls function 'scope4'
+  CS<0x8b60258> calls function 'scope5'
+  CS<0x8b602d8> calls function 'scope6'
+
+Call graph node for function: 'scope1'<<0x8b624a0>>  #uses=3
+  CS<0x8b60438> calls function 'A'
+  CS<0x8b604b8> calls function 'B'
+  CS<0x8b60538> calls function 'C'
+  CS<0x8b605b8> calls function 'D'
+
+Call graph node for function: 'scope2'<<0x8b62540>>  #uses=2
+  CS<0x8b63008> calls function 'A'
+  CS<0x8b63088> calls function 'C'
+  CS<0x8b63108> calls function 'D'
+
+Call graph node for function: 'scope3'<<0x8b624d0>>  #uses=2
+  CS<0x8b63188> calls function 'A'
+  CS<0x8b63208> calls function 'B'
+
+Call graph node for function: 'scope4'<<0x8b67700>>  #uses=2
+  CS<0x8b63348> calls function 'B'
+  CS<0x8b633c8> calls function 'D'
+  CS<0x8b63448> calls function 'scope1'
+
+Call graph node for function: 'scope5'<<0x8b67770>>  #uses=2
+  CS<0x8b63588> calls function 'B'
+  CS<0x8b63608> calls function 'D'
+  CS<0x8b63688> calls function 'A'
+
+Call graph node for function: 'scope6'<<0x8b67670>>  #uses=2
+  CS<0x8b637c8> calls function 'B'
+  CS<0x8b63848> calls function 'D'
+
+Call graph node for function: 'A'<<0x8b5c3e0>>  #uses=5
+  CS<0x8b63b80> calls function 'printf'
+
+Call graph node for function: 'printf'<<0x8b67bb0>>  #uses=5
+  CS<0x0> calls external node
+
+Call graph node for function: 'B'<<0x8b67960>>  #uses=6
+  CS<0x8b63e40> calls function 'printf'
+
+Call graph node for function: 'C'<<0x8b678f0>>  #uses=3
+  CS<0x8b64100> calls function 'printf'
+
+Call graph node for function: 'D'<<0x8b67af0>>  #uses=6
+  CS<0x8b643c0> calls function 'printf'
+
