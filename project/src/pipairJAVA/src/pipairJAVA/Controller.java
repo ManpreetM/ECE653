@@ -1,5 +1,5 @@
 package pipairJAVA;
 
-public class Controller {
-
+public interface Controller {
+	public CallGraph readCallGraph(String fileName);
 }
