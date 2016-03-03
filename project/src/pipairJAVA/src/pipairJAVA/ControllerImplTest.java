@@ -17,7 +17,10 @@ import java.util.regex.Pattern;
 public class ControllerImplTest implements Controller{
     public static void main(String [] args) {
     		Controller c = new ControllerImplTest();
-    		c.readCallGraph("mainCallGraph.txt");
+    		Analyzer a = new Analyzer();
+    		CallGraph g = c.readCallGraph("mainCallGraph.txt");
+    		List<Bug> bugList = a.analyzeGraph(g);
+    		c.printBugList(bugList);
     }
     
     protected Pattern callsP;
@@ -70,7 +73,7 @@ public class ControllerImplTest implements Controller{
 					}
 //				newNode.print();
 				g.addNode(nodeName, callNameList);
-				g.printNode(nodeName);
+//				g.printNode(nodeName);
 				} else {
 					thisLine = in.readLine();
 				}
@@ -80,7 +83,30 @@ public class ControllerImplTest implements Controller{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		g.printGraphInfo();
+//		g.printGraphInfo();
 		return g;
+	}
+	
+	@Override
+	public void printBugList(List<Bug> bugList) {
+	    //bug: %s in %s, pair: (%s, %s), support: %d, confidence: %.2f%%\n
+	    for(Bug bug : bugList) {
+	        String p1, p2;
+	        if(bug.nameHashCode < bug.p1HashCode) {
+	            p1 = bug.name;
+	            p2 = bug.p1;
+	        } else {
+	            p1 = bug.p1;
+	            p2 = bug.name;
+	        }
+	        for(String location : bug.locationSet) {
+	        System.out.format("bug: %s in %s, pair: (%s, %s), support: %d, confidence: %.2f%%\n",
+	                bug.name,
+	                location,
+	                p1, p2,
+	                bug.support,
+	                bug.conf);
+	        }
+	    }
 	}
 }

@@ -89,7 +89,14 @@ public class CallGraph {
     public HashMap<Integer, Integer> getSupportF() {
         return this.supportF;
     }
-
+    
+    public HashMap<Integer, String> getFunctionMap() {
+        return this.functionMap;
+    }
+    
+    public HashMap<Integer,HashSet<Integer>> getNodeMap() {
+        return this.nodeMap;
+    }
     /**
      * check whether a node has a pair composed by A B (<A, B> or <B, A>)
      * better to call this method by callAId is the checked call for checkPair <A, B> or <B,A>
