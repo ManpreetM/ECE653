@@ -11,12 +11,14 @@ public class CallGraph {
     protected HashMap<Integer, HashSet<Integer>> nodeMap;
     protected HashMap<Integer, HashMap<Integer, Integer>> supportP;
     protected HashMap<Integer, Integer> supportF;
+    protected HashSet<String> funcSet;
 
     public CallGraph() {
         functionMap = new HashMap<Integer, String>();
         nodeMap = new HashMap<Integer, HashSet<Integer>>();
         supportP = new HashMap<Integer, HashMap<Integer, Integer>>();
         supportF = new HashMap<Integer, Integer>();
+        funcSet = new HashSet<String>();
     }
 
     /**
@@ -69,6 +71,8 @@ public class CallGraph {
         int nodeId = nodeName.hashCode();
         if(this.nodeMap.containsKey(nodeId))
             return;
+
+        this.functionMap.put(nodeId, nodeName);
         
         HashSet<Integer> callIdSet = new HashSet<Integer>();
         for(String callName : callNameList) {

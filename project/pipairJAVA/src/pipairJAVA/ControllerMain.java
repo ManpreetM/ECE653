@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 public class ControllerMain implements Controller{
     public static void main(String [] args) {
         int t_support = 3;
-        double t_confidence = 0.65;
+        double t_confidence = 65;
         String fileName = null;
         try {
             switch(args.length) {
@@ -109,7 +109,7 @@ public class ControllerMain implements Controller{
 	public void printBugList(List<Bug> bugList) {
 	    for(Bug bug : bugList) {
 	        String p1, p2;
-	        if(bug.nameHashCode < bug.p1HashCode) {
+	        if(bug.name.compareTo(bug.p1) < 0 ) {
 	            p1 = bug.name;
 	            p2 = bug.p1;
 	        } else {

@@ -19,11 +19,12 @@ public class Bug {
      * @param support count of the support pair
      * @param conf confidence of this bug
      */
-    Bug(final String name, final String p1,final int support, final double conf) {       
+    Bug(final String name, final String p1, final int nameHashCode, int p1HashCode,
+            final int support, final double conf) {
         this.name = name;
         this.p1 = p1;
-        this.nameHashCode = name.hashCode();
-        this.p1HashCode = p1.hashCode();
+        this.nameHashCode = nameHashCode;
+        this.p1HashCode = p1HashCode;
         this.support = support;
         this.conf = conf;
         this.locationSet = new HashSet<String>();

@@ -39,18 +39,22 @@ public class Analyzer {
                 
                 assert (cnt_pair <= cnt_n1) && (cnt_pair <= cnt_n2);
                 
-                conf = ((double) cnt_pair / (double)cnt_n1) * 100;
-                if(conf > this.T_CONFIDENCE) {
+                conf =  (cnt_pair * 100.0) / cnt_n1;
+                if(conf >= this.T_CONFIDENCE) {
                     Bug b = new Bug(functionMap.get(call1), 
                             functionMap.get(call2),
+                            call1,
+                            call2,
                             cnt_pair,
                             conf);
                     bugList.add(b);
                 }    
-                conf = ((double) cnt_pair / (double)cnt_n2) * 100;
-                if(conf > this.T_CONFIDENCE) {
+                conf = (cnt_pair * 100.0) / cnt_n2;
+                if(conf >= this.T_CONFIDENCE) {
                     Bug b = new Bug(functionMap.get(call2), 
                             functionMap.get(call1),
+                            call2,
+                            call1,
                             cnt_pair,
                             conf);
                     bugList.add(b);
@@ -58,11 +62,11 @@ public class Analyzer {
             }    
         }
         
-        for(Bug bug : bugList){
+        for(Bug bug : bugList) {
             for(int nodeId : nodeMap.keySet()) {
-                HashSet<Integer> nodeSet = nodeMap.get(nodeId);
-                if(nodeSet.contains(bug.nameHashCode) &&
-                        !nodeSet.contains(bug.p1HashCode))
+                HashSet<Integer> callSet = nodeMap.get(nodeId);
+                if(callSet.contains(bug.nameHashCode) &&
+                        !callSet.contains(bug.p1HashCode))
                         bug.addLocation(functionMap.get(nodeId));
             }
         }
