@@ -37,7 +37,9 @@ public class Analyzer {
                 int cnt_n1 = supportF.get(call1);
                 int cnt_n2 = supportF.get(call2);
                 
-                conf = (double) cnt_pair / (double)cnt_n1;
+                assert (cnt_pair <= cnt_n1) && (cnt_pair <= cnt_n2);
+                
+                conf = ((double) cnt_pair / (double)cnt_n1) * 100;
                 if(conf > this.T_CONFIDENCE) {
                     Bug b = new Bug(functionMap.get(call1), 
                             functionMap.get(call2),
@@ -45,7 +47,7 @@ public class Analyzer {
                             conf);
                     bugList.add(b);
                 }    
-                conf = (double) cnt_pair / (double)cnt_n2;
+                conf = ((double) cnt_pair / (double)cnt_n2) * 100;
                 if(conf > this.T_CONFIDENCE) {
                     Bug b = new Bug(functionMap.get(call2), 
                             functionMap.get(call1),
