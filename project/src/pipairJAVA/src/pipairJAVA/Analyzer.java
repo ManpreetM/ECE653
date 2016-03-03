@@ -8,12 +8,7 @@ import java.util.List;
 public class Analyzer {
     protected final int T_SUPPORT;
     protected final double T_CONFIDENCE;
-
-    public Analyzer() {
-        this.T_SUPPORT = 3;
-        this.T_CONFIDENCE = 0.65;
-    }
-    
+   
     public Analyzer(int t_support, double t_confidence) {
         this.T_SUPPORT = t_support;
         this.T_CONFIDENCE = t_confidence;

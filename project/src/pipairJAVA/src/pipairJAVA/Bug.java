@@ -7,7 +7,7 @@ public class Bug {
     public final String p1;
     public final int nameHashCode;
     public final int p1HashCode;
-    protected HashSet<String> locationSet;
+    public HashSet<String> locationSet;
     public final int support;
     public final double conf;
 
@@ -16,6 +16,7 @@ public class Bug {
      * because bug could exist in multiple locations of the program
      * @param name function name of the bug
      * @param p1 of pair name < p1 ? <name, p1> : <p1, name>
+     * @param support count of the support pair
      * @param conf confidence of this bug
      */
     Bug(final String name, final String p1,final int support, final double conf) {       
